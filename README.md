@@ -81,4 +81,4 @@ MIT License (Open Source – for social impact)
 
 > Team: **Nullified**  
 > Leader: **Mayukh Pal**  
-> Email: [YourEmail@example.com]
+> Email: [mayukhpal.mapl@gmail.com]
