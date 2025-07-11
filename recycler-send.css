@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fdecec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 450px;
+  text-align: center;
+}
+
+h2 {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 0.8rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccf4ff;
+}
+
+button {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+button:first-of-type {
+  background-color: green;
+  color: white;
+}
+
+button:last-of-type {
+  background: none;
+  color: red;
+}

@@ -1,0 +1,60 @@
+/* Background & Base Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fdecec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Centered Container */
+.login-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Title */
+h2 {
+  color: red;
+  margin-bottom: 1.5rem;
+  text-transform: lowercase;
+}
+
+/* Green Success Text */
+.status-message {
+  color: green;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Buttons */
+button {
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0.5rem;
+  background-color: #ccf4ff;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #aee8f8;
+}
+
+/* Special Back Button */
+.back-button {
+  background-color: transparent;
+  color: red;
+  border: 2px solid red;
+}
