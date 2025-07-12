@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Activities</title>
+  <link rel="stylesheet" href="citize-activities-style.css">
+</head>
+<body>
+  <div class="activities-container">
+    <h1>My Activities</h1>
+
+    <!-- Filter Buttons -->
+    <div id="filters">
+      <button onclick="filterRequests('all')">All</button>
+      <button onclick="filterRequests('pending')">Pending</button>
+      <button onclick="filterRequests('done')">Done</button>
+    </div>
+
+    <!-- List of Requests -->
+    <ul id="requestList">
+      <!-- Items will be dynamically added by JavaScript -->
+    </ul>
+  </div>
+
+  <script>
+    // Mock data (replace with fetch call to backend later)
+    const allRequests = [
+      { type: "Plastic", status: "pending", date: "2025-07-10" },
+      { type: "Paper", status: "done", date: "2025-07-05" },
+      { type: "Metal", status: "pending", date: "2025-07-09" }
+    ];
+
+    function displayRequests(filter) {
+      const list = document.getElementById("requestList");
+      list.innerHTML = "";
+
+      const filtered = filter === "all"
+        ? allRequests
+        : allRequests.filter(req => req.status === filter);
+
+      if (filtered.length === 0) {
+        list.innerHTML = `<li class="request-item">No ${filter} requests found.</li>`;
+        return;
+      }
+
+      filtered.forEach(req => {
+        const item = document.createElement("li");
+        item.className = "request-item";
+        item.innerHTML = `
+          <strong>Type:</strong> ${req.type}<br>
+          <strong>Status:</strong> <span class="badge ${req.status.toLowerCase()}">${req.status}</span><br>
+          <strong>Date:</strong> ${req.date}
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function filterRequests(status) {
+      displayRequests(status);
+    }
+
+    // Default view
+    displayRequests("all");
+  </script>
+</body>
+</html>
