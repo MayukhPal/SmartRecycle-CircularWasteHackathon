@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Citizen Profile - Smart Recycling</title>
+  <link rel="stylesheet" href="citizen-profile-style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Recycling</h1>
+    <p class="tagline">Your Profile</p>
+
+    <!-- Profile Picture -->
+    <div class="profile-pic-wrapper">
+      <img src="default-user.png" id="profilePic" alt="Profile Picture" />
+      <input type="file" id="picUpload" accept="image/*" hidden />
+    </div>
+
+    <!-- Profile Form -->
+    <form class="form-box">
+      <!-- Personal Info -->
+      <div class="form-group">
+        <label for="userId">Name / ID</label>
+        <input type="text" id="userId" value="Citizen123" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Contact Number</label>
+        <input type="text" id="phone" placeholder="Enter contact number" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email (optional)</label>
+        <input type="text" id="email" placeholder="Enter email" />
+      </div>
+
+      <!-- Address Info -->
+      <div class="form-group">
+        <label for="address">Full Address</label>
+        <input type="text" id="address" placeholder="Enter full address" />
+      </div>
+
+      <div class="form-group">
+        <label for="landmark">Landmark</label>
+        <input type="text" id="landmark" placeholder="E.g. Near Green Park" />
+      </div>
+
+      <div class="form-group">
+        <label for="pincode">Pincode</label>
+        <input type="text" id="pincode" placeholder="Enter area pincode" />
+      </div>
+
+      <!-- Summary -->
+      <div class="profile-summary">
+        <p><strong>Total Pickups:</strong> 12</p>
+        <p><strong>Redemption Balance:</strong> ₹240</p>
+      </div>
+
+      <button type="submit" class="btn blue-btn">Save Changes</button>
+    </form>
+  </div>
+
+  <!-- Script for image preview -->
+  <script>
+    const profilePic = document.getElementById('profilePic');
+    const fileInput = document.getElementById('picUpload');
+
+    profilePic.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          profilePic.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request Pickup - Smart Recycling</title>
+  <link rel="stylesheet" href="request-pickup-style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Recycling</h1>
+    <p class="tagline">Request a Pickup for Your Full Bin</p>
+
+    <form id="pickupForm" class="form-box" enctype="multipart/form-data">
+      <!-- Name / ID -->
+      <div class="form-group">
+        <label for="name">Name / ID</label>
+        <input type="text" id="name" name="name" value="Citizen123" readonly />
+      </div>
+
+      <!-- Location -->
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="123 Green Street, EcoTown" />
+      </div>
+
+      <!-- Waste Type -->
+      <div class="form-group">
+        <label>Waste Type (Tick all that apply)</label>
+        <div class="checkbox-group" id="wasteOptions">
+          <label><input type="checkbox" class="type-check" value="Plastic" /> Plastic</label>
+          <label><input type="checkbox" class="type-check" value="Paper" /> Paper</label>
+          <label><input type="checkbox" class="type-check" value="Metal" /> Metal</label>
+          <label><input type="checkbox" class="type-check" value="E-waste" /> E-waste</label>
+          <label><input type="checkbox" id="mixedCheck" value="Mixed" checked /> Mixed</label>
+        </div>
+      </div>
+
+      <!-- Pickup Date -->
+      <div class="form-group">
+        <label for="pickupDate">Preferred Pickup Date (Min +5 Days)</label>
+        <input type="date" id="pickupDate" name="pickupDate" required />
+      </div>
+
+      <!-- Bin Photo -->
+      <div class="form-group">
+        <label for="binPhoto">Upload Bin Photo</label>
+        <input type="file" id="binPhoto" name="binPhoto" accept="image/*" />
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn blue-btn">Submit Request</button>
+    </form>
+
+    <div id="successMessage" style="display:none; margin-top: 1.5rem;">
+      ✅ Pickup request submitted successfully! Redirecting...
+    </div>
+  </div>
+
+  <script>
+    // Set minimum date to 5 days from now
+    const dateInput = document.getElementById("pickupDate");
+    const today = new Date();
+    const minDate = new Date(today.setDate(today.getDate() + 5));
+    dateInput.min = minDate.toISOString().split("T")[0];
+    dateInput.value = dateInput.min;
+
+    // Mixed checkbox logic
+    const typeCheckboxes = document.querySelectorAll('.type-check');
+    const mixedCheck = document.getElementById('mixedCheck');
+
+    typeCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const allChecked = Array.from(typeCheckboxes).every(cb => cb.checked);
+
+        if (allChecked) {
+          typeCheckboxes.forEach(cb => cb.checked = false);
+          mixedCheck.checked = true;
+        } else {
+          mixedCheck.checked = false;
+        }
+
+        const anyChecked = Array.from(typeCheckboxes).some(cb => cb.checked);
+        if (!anyChecked) mixedCheck.checked = true;
+      });
+    });
+
+    // Handle form submit
+    document.getElementById("pickupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Show success message
+      document.getElementById("successMessage").style.display = "block";
+
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = "dashboard-citizen.html";
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
