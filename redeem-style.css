@@ -1,0 +1,142 @@
+:root {
+  --primary-color: #28a745;
+  --secondary-color: #ff6f61;
+  --highlight-color: #007BFF;
+  --bg-color: #f4f8fb;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --border-color: #ddd;
+  --donate-color: #ffc107;
+  --redeem-shadow: rgba(0, 123, 255, 0.15);
+  --donate-shadow: rgba(255, 193, 7, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.redeem-container {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  max-width: 960px;
+  width: 100%;
+}
+
+.redeem-container h1 {
+  text-align: center;
+  color: var(--highlight-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.coin-balance {
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #e6f5e6;
+  color: var(--primary-color);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.redeem-container h2 {
+  margin: 2rem 0 1rem;
+  color: var(--secondary-color);
+  font-size: 1.4rem;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.reward-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px var(--redeem-shadow);
+}
+
+.reward-card.donate {
+  box-shadow: 0 4px 12px var(--donate-shadow);
+  border-left: 5px solid var(--donate-color);
+}
+
+.reward-card:hover {
+  transform: translateY(-5px);
+}
+
+.reward-card .icon {
+  font-size: 2.5rem;
+  color: var(--highlight-color);
+  margin-bottom: 1rem;
+}
+
+.reward-card.donate .icon {
+  color: var(--donate-color);
+}
+
+.reward-card h3 {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.reward-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.reward-card button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.reward-card.donate button {
+  background-color: var(--donate-color);
+  color: #222;
+}
+
+.reward-card button:hover {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 600px) {
+  .redeem-container {
+    padding: 1.5rem;
+  }
+
+  .reward-card {
+    padding: 1rem;
+  }
+
+  .coin-balance {
+    font-size: 1rem;
+  }
+}
